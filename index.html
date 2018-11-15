@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zdjęcia</title>
+    <style>
+        #slider {
+             display: flex;
+             /*transform: translateX(-100); */
+
+        }
+     </style>
+     
+</head>
+<body>
+    <input type="text" name ="" id="photo">
+     <button id="pobierz">Pobierz zdjęcie </button>
+     <div id="slider">
+            <img src="https://picsum.photos/600/400?r=1" alt="">
+            <img src="https://picsum.photos/600/400?r=2" alt="">
+            <img src="https://picsum.photos/600/400?r=3" alt="">
+            <img src="https://picsum.photos/600/400?r=4" alt="">
+     </div>> 
+
+     <script type="text/javascript"> 
+        const slider = document.querySelector('#slider')
+        let polozenie = 0
+        let czyAnimowac = true
+        slider
+        .addEventListener('mouseover', ()=>{
+        //clearInterval(animInterval)
+        czyAnimowac = false
+        })
+        slider.addEventListener('mouseout', ()=>{
+        czyAnimowac = true
+        animacja()
+         //animInterval = setInterval(animacja, 16)
+        })
+        let step = -3
+        animacja()
+        //let animInterval = setTimeout(animacja, 16)
+        
+        function animacja() {
+           
+            if(polozenie < -1000)
+            {
+                step =3
+            }
+            if (polozenie > 0)
+            {
+                step = -3
+            }
+           // setTimeout(animacja, 16)
+            //console.log(polozenie)
+            polozenie +=step
+            //polozenie--
+           slider.style.transform =`translateX(${polozenie}px)` 
+           if(czyAnimowac){
+           requestAnimationFrame(animacja)
+           }
+   
+        }
+        </script>
+     
+     <img id="photo1" src="" alt="">
+     <script>
+   const przycisk = document.querySelector("#pobierz")
+   przycisk.addEventListener("click", function(){ // () => zamiast function
+       document.querySelector("#photo1").src=document.querySelector("#photo").value;
+// const sciezka = document.queruselector('input').value
+       // const zdjeciepojemnik= document.queruselector('input').value
+       //zdjeciepojemnik.scr = sciezka
+   } )
+
+     </script>
+</body>
+</html>
